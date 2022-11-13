@@ -8,7 +8,7 @@ type (string - type van link: internal of external)
 
 const navigation = [{
     name: "Projecten",
-    link: "To id of projects of this page",
+    link: "#all-cards",
     type: "internal"
   },
   {
@@ -77,10 +77,8 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/delvauxcharlotte/screenshot_01.png",
+      "images/delvauxcharlotte/screenshot_02.png"
     ]
   },
   {
@@ -101,10 +99,10 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/cathelijndylan/screenshot_01.png",
+      "images/cathelijndylan/screenshot_02.png",
+      "images/cathelijndylan/screenshot_03.png",
+      "images/cathelijndylan/screenshot_04.png"
     ]
   },
   {
@@ -125,10 +123,10 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/deschachtjan/screenshot_01.png",
+      "images/deschachtjan/screenshot_02.png",
+      "images/deschachtjan/screenshot_03.png",
+      "images/deschachtjan/screenshot_04.png"
     ]
   },
   {
@@ -149,10 +147,9 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/dinganithabisa/screenshot_01.png",
+      "images/dinganithabisa/screenshot_02.png",
+      "images/dinganithabisa/screenshot_03.png"
     ]
   },
   {
@@ -173,10 +170,9 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/hartjamielee/screenshot_01.png",
+      "images/hartjamielee/screenshot_02.png",
+      "images/hartjamielee/screenshot_03.png"
     ]
   },
   {
@@ -197,10 +193,9 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/soufiaiden/screenshot_01.png",
+      "images/soufiaiden/screenshot_01.png",
+      "images/soufiaiden/screenshot_01.png"
     ]
   },
   {
@@ -221,10 +216,9 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/cnuddenicolas/screenshot_01.png",
+      "images/cnuddenicolas/screenshot_02.png",
+      "images/cnuddenicolas/screenshot_03.png"
     ]
   },
   {
@@ -245,10 +239,10 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/vandenbusschebram/screenshot_01.png",
+      "images/vandenbusschebram/screenshot_02.png",
+      "images/vandenbusschebram/screenshot_03.png",
+      "images/vandenbusschebram/screenshot_04.png"
     ]
   },
   {
@@ -269,10 +263,9 @@ const projects = [{
       }
     ],
     screenshots: [
-      "",
-      "",
-      "",
-      ""
+      "images/crielbram/screenshot_01.png",
+      "images/crielbram/screenshot_02.png",
+      "images/crielbram/screenshot_03.png"
     ]
   }
 ]
@@ -286,28 +279,35 @@ Social: object
 */
 
 const socials = [{
-    name: "Website",
-    image: "",
-    link: "https://www.arteveldehogeschool.be/"
+    name: "website",
+    image: "images/icons/link-solid.svg",
+    link: "http://www.pgm.gent"
   },
   {
-    name: "Linkedin",
-    image: "",
-    link: "https://www.linkedin.com/school/arteveldehogeschool/"
+    name: "linkedin",
+    image: "images/icons/linkedin.svg",
+    link: "https://www.linkedin.com/company/28878545/admin/"
   },
   {
-    name: "Facebook",
-    image: "",
-    link: "https://www.facebook.com/"
+    name: "facebook",
+    image: "images/icons/facebook.svg",
+    link: "https://www.facebook.com/Programmeren.ahs"
   },
   {
-    name: "Instagram",
-    image: "",
-    link: "https://www.instagram.com/"
+    name: "instagram",
+    image: "images/icons/instagram.svg",
+    link: "https://www.instagram.com/programmeren.ahs/"
   },
   {
-    name: "Youtube",
-    image: "",
-    link: "https://www.youtube.com/"
+    name: "youtube",
+    image: "images/icons/youtube.svg",
+    link: "https://www.youtube.com/channel/UCHly8VZULSMWEmvbPJNVtFA"
   }
 ]
+
+export {
+  navigation,
+  events,
+  projects,
+  socials
+};
