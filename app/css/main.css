@@ -165,6 +165,19 @@ h2 {
   padding: .25rem .5rem;
 }
 
+svg {
+  width: 3rem;
+  position: absolute;
+  right: 3rem;
+  top: 2rem;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+svg:hover {
+  transform: rotate(180deg);
+}
+
 .project-info {
   background-color: #ffffff;
   height: 100%;
@@ -179,17 +192,21 @@ h2 {
   z-index: 10;
 }
 
-svg {
-  width: 3rem;
-  position: absolute;
-  right: 3rem;
-  top: 2rem;
-  transition: all .5s ease-in-out;
-  cursor: pointer;
+.detail-images {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 2rem;
 }
 
-svg:hover {
-  transform: rotate(180deg);
+.detail-images img {
+  max-height: 15rem;
+  object-fit: cover;
+}
+
+.synopsis {
+  margin-bottom: 1.5rem;
 }
 
 .hidden {

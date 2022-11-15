@@ -12,9 +12,8 @@ const uList = document.querySelector("#full-list");
 const eventArticle = document.querySelector("#event-div");
 
 const projectArticle = document.querySelector("#all-cards");
-const projectCard = document.querySelectorAll(".project-card");
 const projectInfo = document.querySelector(".project-info");
-const detailText = document.querySelector(".project-info-content");
+let detailText = document.querySelector(".project-info-content");
 
 const filterBar = document.querySelector("#filter");
 
@@ -27,8 +26,8 @@ const getNavigation = (navItem) => {
   return `<li><a target="blank" href="${navItem.link}">${navItem.name}</a></li>`;
 }
 
-navigation.forEach(item => {
-  uList.innerHTML += `${getNavigation(item)}`;
+navigation.forEach(project => {
+  uList.innerHTML += `${getNavigation(project)}`;
 });
 
 /* De verschillende events ophalen en weergeven */
@@ -36,8 +35,8 @@ const getEvents = (event) => {
   return `<p><a target="blank" href="${event.link}">${event.title}</a></p>`;
 }
 
-events.forEach(text => {
-  eventArticle.innerHTML += `${getEvents(text)}`;
+events.forEach(project => {
+  eventArticle.innerHTML += `${getEvents(project)}`;
 });
 
 /* Time counter vanaf begin van dit schooljaar */
@@ -73,12 +72,12 @@ countUpTimer(1663569900000);
 const getProjects = (projectPart) => {
   return `<div data-id="${projectPart.id}" class="project-card">
   <div class="header-img-card">
-    <img class="project-header-image" src="${projectPart.screenshots[0]}" alt="">
+  <img class="project-header-image" src="${projectPart.screenshots[0]}" alt="Screenshot van het project">
   </div>
   <h1>${projectPart.author.firstName} ${projectPart.author.lastName}</h1>
   <h2>${projectPart.title}</h2>
   <div class="tech-in-card">
-    ${getTech(projectPart)}
+  ${getTech(projectPart)}
   </div>
   </div>`;
 }
@@ -96,51 +95,50 @@ projects.forEach(project => {
 });
 
 /* Live search */
-console.log(filterBar);
-
 filterBar.addEventListener("keyup", (event) => {
   const searchStr = event.target.value;
-  const filteredChars = projects.filter(character => {
-    return character.title.includes(searchStr);
+  const filteredProj = projects.filter(project => {
+    return project.title.toLowerCase().includes(searchStr.toLowerCase());
   })
-  getTech(filteredChars);
+  console.log(filteredProj);
+  filteredProj.forEach(project => {
+    projectArticle.innerHTML = `${getProjects(project)}`;
+  });
 });
 
 /* Detail ophalen voor project door klik */
 const getDetailImages = (images) => {
-  console.log(images);
-  for (let index = 0; index < images.length; index++) {
-    return `<img class="project-header-image" src="${images.screenshots}" alt="beeld">`
-  }
-  console.log(images);
+  // console.log(images);
+  let tempStrImgs = images.map((image) => {
+    return `<img class="project-header-image" src="${image}" alt="Screenshot van het project">`;
+  })
+  return tempStrImgs.join("");
 }
 
-// projects.forEach(imgs => {
-//   detailText.innerHTML += `${getDetailImages(imgs)}`;
-// });
-
-const openDetails = (detail) => {
-  return `${getDetailImages(detail.screenshots)}
-  <h1>${detail.author.firstName} ${detail.author.lastName}</h1>
-  <h2>${detail.title}</h2>
-  <div class="tech-in-card">
-    ${getTech(detail)}
-  </div>
-  <p>${detail.synopsis}</p>`;
+const openDetails = (id) => {
+  let project = projects.find((project) => project.id == id);
+  return `<div class="detail-images">
+      ${getDetailImages(project.screenshots)}
+      </div>
+      <h1>${project.author.firstName} ${project.author.lastName}</h1>
+      <h2>${project.title}</h2>
+      <p class="synopsis">${project.synopsis}</p>
+      <div class="tech-in-card">
+      ${getTech(project)}
+      </div>`;
 }
-
-projects.forEach(details => {
-  detailText.innerHTML += `${openDetails(details)}`;
-});
 
 /* Klik event */
-const openInfo = () => {
+const openInfo = (id) => {
   projectInfo.classList.remove("hidden");
 }
 
-projectCard.forEach(element => {
-  element.addEventListener("click", openInfo, (event) => {
-    openDetails(event.event.target.dataset.id || event.target.parentNode.dataset.id || event.target.parentNode.parentNode.dataset.id)
+const projectCards = document.querySelectorAll(".project-card");
+projectCards.forEach(element => {
+
+  element.addEventListener("click", (event) => {
+    openInfo();
+    detailText.innerHTML = openDetails(element.dataset.id);
   });
 });
 
@@ -170,7 +168,7 @@ const countDownTimer = (time) => {
     let seconds = Math.floor((timeBlock % minute) / second);
 
     document.querySelector("#timer-block-two").innerHTML = `<p class="clock">${days}days ${hours}h ${minutes}m ${seconds}s</p>
-    <p class="text-under-time">till next academic year 2023-24</p>`;
+        <p class="text-under-time">till next academic year 2023-24</p>`;
   }
 
   timer = setInterval(getTimeToGo, 1000);
@@ -183,8 +181,8 @@ const getSocials = (socialitem) => {
   return `<a target="blank" href="${socialitem.link}"><img src="${socialitem.image}" alt="Logo van ${socialitem.name}"></a>`;
 }
 
-socials.forEach(social => {
-  socialBlock.innerHTML += `${getSocials(social)}`;
+socials.forEach(project => {
+  socialBlock.innerHTML += `${getSocials(project)}`;
 });
 
 /* Copyright ophalen beneden de pagina */
