@@ -21,9 +21,36 @@ const socialBlock = document.querySelector("#socials");
 
 const copyrightBlock = document.querySelector("footer");
 
+/* Hamburger menu */
+const menu = document.querySelector(".menu");
+const menuItems = document.querySelectorAll(".menu-items");
+const hambMenu = document.querySelector(".hamb-menu");
+const closeMenu = document.querySelector(".close-menu");
+const openMenu = document.querySelector(".open-menu");
+
+const toggleMenu = () => {
+  if (menu.classList.contains("showMenu")) {
+    menu.classList.remove("showMenu");
+    closeMenu.style.display = "none";
+    openMenu.style.display = "block";
+  } else {
+    menu.classList.add("showMenu");
+    closeMenu.style.display = "block";
+    openMenu.style.display = "none";
+  }
+}
+
+hambMenu.addEventListener("click", toggleMenu);
+
+menuItems.forEach(
+  function (item) {
+    item.addEventListener("click", toggleMenu);
+  }
+)
+
 /* Alles van navigatie ophalen */
 const getNavigation = (navItem) => {
-  return `<li><a target="blank" href="${navItem.link}">${navItem.name}</a></li>`;
+  return `<li class="menu-items"><a target="blank" href="${navItem.link}">${navItem.name}</a></li>`;
 }
 
 navigation.forEach(project => {

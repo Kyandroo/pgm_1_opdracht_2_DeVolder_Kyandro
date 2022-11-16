@@ -33,22 +33,51 @@ body {
   margin: 0 auto;
 }
 
-nav {
-  background-color: #000000;
+.hamb-menu {
+  background: #000000;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
 }
 
-nav ul {
-  list-style: none;
+.hamb-menu svg {
+  max-width: 3rem;
+}
+
+.close-menu {
+  display: none;
+}
+
+.menu {
+  text-align: center;
+  line-height: 5rem;
+  background-color: #000000;
   padding: 2rem 1rem;
   gap: 2rem;
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+  top: 6rem;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  list-style: none;
 }
 
 nav ul li a {
+  font-family: "Noto Sans Mono";
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 2rem;
   text-decoration: none;
+  margin-bottom: 3rem;
+}
+
+.showMenu {
+  transform: translateY(0);
 }
 
 .events {
@@ -165,7 +194,7 @@ h2 {
   padding: .25rem .5rem;
 }
 
-svg {
+.project-info svg {
   width: 3rem;
   position: absolute;
   right: 3rem;
@@ -174,7 +203,7 @@ svg {
   transition: all .5s ease-in-out;
 }
 
-svg:hover {
+.project-info svg:hover {
   transform: rotate(180deg);
 }
 
